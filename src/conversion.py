@@ -3,11 +3,16 @@ import eaps
 from datasets import StateDataset, data_directory
 
 # ----------------------------------------------------------------------------------------
+# Constants
+# ----------------------------------------------------------------------------------------
+GM_SUN = 2.95912208285590931905e-04 # AU^3 / DAY^2
+
+# ----------------------------------------------------------------------------------------
 # Conversion
 # ----------------------------------------------------------------------------------------
 def process_dataset(ds: StateDataset):
     (t, ss) = ds.times_and_states()
-    elements = eaps.KeplerianElements.from_states(1.0, ss)
+    elements = eaps.KeplerianElements.from_states(GM_SUN, ss)
     return pd.DataFrame(
         data={
             "t": t,

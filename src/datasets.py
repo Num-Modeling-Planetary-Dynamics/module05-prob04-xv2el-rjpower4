@@ -90,5 +90,5 @@ class ElementDataset(Dataset):
 
     def output_path(self) -> pathlib.Path:
         parent = self.path.parent.resolve().parent.resolve() / "plots"
-        name = self.path.stem.strip("-XV") + "-EL" + ".png"
+        name = self.path.stem + ".png"
         return parent / name
